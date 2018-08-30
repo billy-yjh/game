@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .back {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .p {
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .nav {
+            position: absolute;
+            right: -20px;
+            top: 0;
+            height: 30px;
+            width: 550px;
+        }
+
+        .nav li {
+            height: 30px;
+            width: 50px;
+            margin-left: 5px;
+            line-height: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            float: left;
+            text-align: center;
+        }
+
+        .nav li a {
+            color: black;
+        }
+
+        .nav li a:hover {
+            color: rgb(3, 65, 151);
+        }
+
+        .nav li input {
+            padding: 3px;
+            background-color: #38f;
+            color: white;
+            font-size: 11px;
+            border: 0px;
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -500px;
+            height: 300px;
+            width: 1000px;
+            text-align: center;
+        }
+
+        .wrapper img {
+            margin-top: -20px;
+            height: 129px;
+            width: 270px;
+        }
+
+        .search-box {
+            margin-top: 20px;
+            height: 40px;
+            width: auto;
+        }
+
+        .search-box span {
+            display: inline-block;
+            height: 36px;
+            width: 540px;
+            border: 1px solid #b6b6b6;
+        }
+
+        .search-box span input {
+            margin-top: 5px;
+            height: 22px;
+            width: 500px;
+            margin-left: -13px;
+            border: 0px;
+            outline: none;
+        }
+
+        .inpt {
+            width: 100px;
+            height: 38px;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            background: #3385ff;
+            border: 0px;
+            outline: none;
+            vertical-align: top;
+            margin-left: -4.74px;
+        }
+
+        .oDiv {
+            position: absolute;
+            bottom: 30px;
+            height: 200px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .img {
+            background: url(https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_efde696.png) 0 0 no-repeat;
+            height: 60px;
+            width: 60px;
+            margin: 5px auto;
+        }
+
+        .oDiv b {
+            color: #666;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .oDiv .footer1 {
+            margin: 15px auto;
+        }
+
+        .oDiv .footer1 a {
+            margin-left: 40px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .oDiv .footer2 {
+            margin: 10px auto;
+        }
+
+        .oDiv .footer2 a {
+            margin-left: 40px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /*搜索框的jsonp  事件的样式*/
+
+        .wrapper #oul {
+            position: relative;
+            left: 179px;
+            top: -2px;
+            width: 540px;
+            border: 1px solid black;
+            display: none;
+            background-color: white;
+            z-index: 2;
+        }
+
+        .oli {
+            text-align: left;
+        }
+
+        .oli a {
+            margin: 15px;
+            text-decoration: none;
+            color: #7A77C8;
+            font-size: 14px
+        }
+
+        .oli:hover {
+            background-color: rgba(149, 146, 228, 0.3);
+        }
+
+        .oli a:active {
+            color: black;
+        }
+
+        /*弹框样式*/
+
+        .in-box {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -204px;
+            margin-left: -178px;
+            text-align: center;
+            height: 408px;
+            width: 356px;
+            border: 1px solid black;
+            background-color: white;
+        }
+
+        .close-div {
+            height: 25px;
+            width: 356px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2px;
+            right: 3px;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+        }
+
+        .body {
+            position: relative;
+            left: 50%;
+            margin-left: -151px;
+            height: 248px;
+            width: 302px;
+        }
+
+        .in-box-p {
+            position: relative;
+            height: 32px;
+            width: 302px;
+            overflow: hidden;
+        }
+
+        .in-box-p img {
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            height: 55px;
+            width: 120px;
+        }
+
+        .in-box-p span {
+            position: absolute;
+            left: 125px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .input-box {
+            height: 200px;
+            width: 100%;
+        }
+
+        .input-box p {
+            width: 302px;
+            height: 42px;
+            margin-top: 15px;
+        }
+
+        .input-nav {
+            position: relative;
+            height: 20px;
+            padding: 10px 8px;
+            font-size: 14px;
+            color: #666;
+            width: 284px;
+            border: 0px;
+            outline: none;
+        }
+
+        .input-box .p1 {
+            height: 25px;
+            width: 302px;
+        }
+
+        .input-box .p1 input {
+            position: relative;
+            top: 5px;
+            left: -98px;
+        }
+
+        .input-box .p1 span {
+            font-size: 12px;
+            position: relative;
+            top: 2.5px;
+            left: -95px;
+        }
+
+        .input-box .denglu {
+            width: 300px;
+            height: 40px;
+            background-color: #4490f7;
+            color: white;
+            font-weight: bold;
+            line-height: 40px;
+            text-align: center;
+            border: 0px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .left {
+            text-decoration: none;
+            color: #4490f7;
+            font-size: 13px;
+            float: left;
+        }
+
+        .right {
+            text-decoration: none;
+            float: right;
+            color: #4490f7;
+            font-size: 13px;
+        }
+
+        .bottom {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            color: #2e82ff;
+            margin-top: 70px;
+            line-height: 60px;
+            background: #f0f6ff;
+            padding: 0 28px;
+        }
+
+        .bottom .bottom-p span {
+            font-size: 13px;
+        }
+
+        .bottom-p-span-left {
+            float: left;
+        }
+
+        .bottom-p-span-right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="p">
+        <ul class="nav">
+            <li>
+                <a href="">新闻</a>
+            </li>
+            <li>
+                <a href="">hao123</a>
+            </li>
+            <li>
+                <a href="">地图</a>
+            </li>
+            <li>
+                <a href="">视频</a>
+            </li>
+            <li>
+                <a href="">贴吧</a>
+            </li>
+            <li>
+                <a href="">学术</a>
+            </li>
+            <li>
+                <a href="#" class="loding">登录</a>
+            </li>
+            <li>
+                <a href="">设置</a>
+            </li>
+            <li>
+                <input type="button" value="更多产品">
+            </li>
+        </ul>
+        <div class="wrapper">
+            <img src="bd_logo1.png" alt="">
+            <div class="search-box">
+                <span>
+                    <input type="text" id="inp">
+                </span>
+                <input class="inpt" type="button" value="百度一下">
+            </div>
+            <ul id="oul">
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="oDiv">
+            <div class="img"></div>
+            <b>百度</b>
+            <div class="footer1">
+                <a href="">把百度设为主页</a>
+                <a href="">关于百度</a>
+                <a href="">About Baidu</a>
+                <a href="">百度推广</a>
+            </div>
+            <div class="footer2">
+                <a href=""> ©2018 Baidu 使用百度前必读 意见反馈 京ICP证030173号 </a>
+                <a href="">京公网安备11000002000001号</a>
+            </div>
+        </div>
+    </div>
+    <div class="back"></div>
+
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        $('.loding').on('click', function () {
+            var lock = true;
+            if (lock) {
+                var str =
+                    '     <div class="in-box">\
+                            <div class="close-div">\
+                                <img class="close-btn" src="closeBtn.png" alt="">\
+                            </div>\
+                            <div class="body">\
+                                <p class="in-box-p">\
+                                    <img src="bd_logo1.png" alt="">\
+                                    <span> . 用户名密码登录</span>\
+                                </p>\
+                                <div class="input-box">\
+                                    <p style="border: 1px solid #888">\
+                                        <input class="input-nav" type="text" placeholder="手机/邮箱/用户名">\
+                                    </p>\
+                                    <p style="border: 1px solid #888">\
+                                        <input class="input-nav" type="password" placeholder="密码">\
+                                    </p>\
+                                    <p class="p1">\
+                                        <input class="checkbox" type="checkbox" checked> \
+                                        <span>下次自动登录 </span>\
+                                    </p>\
+                                    <p>\
+                                        <input class="denglu" type="button" value="登录">\
+                                    </p>\
+                                    <p class="p-a">\
+                                        <a class="left" href="" >忘记密码?</a>\
+                                        <a class="right" href="" >短信快捷登录</a>\
+                                    </p>\
+                                </div>\
+                            </div>\
+                            <div class="bottom">\
+                                <p class="bottom-p">\
+                                    <span class="bottom-p-span-left">扫码登录 |</span>\
+                                    <span class="bottom-p-span-right">立即注册</span>\
+                                </p>\
+                            </div>\
+                        </div>  \
+                    ';
+                $('.back').append($(str));
+            }
+            $('.in-box').css('display', 'block');
+            $('.back').css('display', 'block')
+            $('.close-btn').one('click', function () {
+                $('.in-box').css('display', 'none');
+                $('.back').css('display', 'none')
+            })
+        })
+
+        var oUl = document.getElementsByTagName('ul')[1];
+        var oInp = document.getElementsByTagName('input')[1];
+        oInp.oninput = function () {
+            var value = this.value;
+            var oScript = document.createElement('script');
+            oScript.src = ' https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=doJson';
+            document.body.appendChild(oScript);
+            document.body.removeChild(oScript);
+        }
+
+        function doJson(data) {
+            var s = data.s;
+            var str = '';
+            if (s.length > 0) {
+                s.forEach(function (ele, index) {
+                    str += '<li class="oli"><a href="https://www.baidu.com/s?wd=' + ele + '">' + ele +
+                        '</a></li>';
+                })
+                oUl.innerHTML = str;
+                oUl.style.display = 'block';
+            } else {
+                oUl.style.display = 'none';
+            }
+
+        }
+    </script>
+</body>
+
+</html>
